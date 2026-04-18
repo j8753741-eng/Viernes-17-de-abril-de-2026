@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>viernes 17 de abril de 2026</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+    :root{
+      --bg1:#07020f;
+      --bg2:#120326;
+      --card:#0d0418cc;
+      --gold:#d9b46a;
+      --pink:#ff8fd7;
+      --purple:#a855f7;
+      --text:#f5f0ff;
+      --soft:#cbb9e6;
+      --line:#ffffff1f;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 15% 20%, #3b0764 0%, transparent 55%),
+        radial-gradient(circle at 80% 30%, #7c3aed 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, #db2777 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      font-family:'Poppins', sans-serif;
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:35px 14px;
+      overflow-x:hidden;
+    }
+
+    /* Decorative floating hearts */
+    .floating{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      opacity:.12;
+      font-size:26px;
+      animation: floatUp 12s linear infinite;
+      filter: drop-shadow(0 0 12px rgba(168,85,247,.7));
+    }
+    .heart:nth-child(1){left:10%; animation-duration:13s; font-size:22px;}
+    .heart:nth-child(2){left:30%; animation-duration:10s; font-size:28px;}
+    .heart:nth-child(3){left:55%; animation-duration:15s; font-size:24px;}
+    .heart:nth-child(4){left:75%; animation-duration:11s; font-size:30px;}
+    .heart:nth-child(5){left:90%; animation-duration:14s; font-size:20px;}
+
+    @keyframes floatUp{
+      0%{transform:translateY(120vh) rotate(0deg); opacity:0;}
+      10%{opacity:.16;}
+      80%{opacity:.14;}
+      100%{transform:translateY(-30vh) rotate(360deg); opacity:0;}
+    }
+
+    /* Main letter */
+    .letter-wrap{
+      width:min(920px, 100%);
+      position:relative;
+      z-index:2;
+    }
+
+    .frame{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      padding:18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* corner ornaments */
+    .frame::before,
+    .frame::after{
+      content:"";
+      position:absolute;
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      filter: blur(35px);
+      opacity:.35;
+      z-index:0;
+    }
+    .frame::before{
+      background:rgba(168,85,247,.9);
+      top:-70px;
+      left:-70px;
+    }
+    .frame::after{
+      background:rgba(255,143,215,.85);
+      bottom:-70px;
+      right:-70px;
+    }
+
+    .paper{
+      background:linear-gradient(180deg, rgba(13,4,24,.92), rgba(10,2,20,.86));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:22px;
+      padding:40px 34px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* header */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:22px;
+    }
+
+    .date{
+      font-family:'Playfair Display', serif;
+      font-size:17px;
+      color:var(--soft);
+      letter-spacing:.4px;
+    }
+
+    .seal{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:600;
+      color:var(--gold);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .seal .ring{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:1px solid rgba(217,180,106,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 0 18px rgba(217,180,106,.25);
+      background:rgba(217,180,106,.08);
+    }
+
+    /* title */
+    .title{
+      font-family:'Playfair Display', serif;
+      font-size:34px;
+      font-weight:700;
+      margin-bottom:6px;
+      line-height:1.1;
+      background:linear-gradient(90deg, #ffd6ff, #c4b5fd, #ff8fd7);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .subtitle{
+      color:var(--soft);
+      font-size:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:28px;
+      opacity:.9;
+    }
+
+    .content{
+      font-size:16px;
+      line-height:1.85;
+      color:rgba(245,240,255,.95);
+    }
+
+    .content p{
+      margin-bottom:18px;
+    }
+
+    .content .saludo{
+      font-family:'Playfair Display', serif;
+      font-size:20px;
+      margin-bottom:18px;
+      color:#fff;
+    }
+
+    .divider{
+      margin:26px 0;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      opacity:.85;
+    }
+
+    .divider span{
+      height:1px;
+      flex:1;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.20), transparent);
+    }
+
+    .divider b{
+      font-size:16px;
+      color:var(--pink);
+      filter: drop-shadow(0 0 10px rgba(255,143,215,.55));
+    }
+
+    /* signature */
+    .signature{
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .signature .closing{
+      font-family:'Playfair Display', serif;
+      font-size:18px;
+      color:#fff;
+    }
+
+    .signature .name{
+      font-weight:700;
+      font-size:16px;
+      letter-spacing:.6px;
+      color:#e9d5ff;
+    }
+
+    .signature .name span{
+      color:var(--purple);
+      font-weight:800;
+      text-shadow:0 0 12px rgba(168,85,247,.65);
+    }
+
+    /* final neon quote */
+    .final-quote{
+      margin-top:26px;
+      padding:22px 18px;
+      border-radius:18px;
+      border:1px solid rgba(168,85,247,.35);
+      background:rgba(168,85,247,.08);
+      text-align:center;
+      font-family:'Playfair Display', serif;
+      font-size:18px;
+      line-height:1.6;
+      color:#f3e8ff;
+      text-shadow:
+        0 0 10px rgba(168,85,247,.75),
+        0 0 25px rgba(168,85,247,.55),
+        0 0 45px rgba(168,85,247,.35);
+    }
+
+    .final-quote strong{
+      font-family:'Poppins', sans-serif;
+      font-size:16px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:#e9d5ff;
+      text-transform:uppercase;
+    }
+
+    /* little footer detail */
+    .footer-detail{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      color:rgba(255,255,255,.6);
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .footer-detail i{
+      color:var(--pink);
+      font-style:normal;
+      filter: drop-shadow(0 0 10px rgba(255,143,215,.55));
+    }
+
+    @media (max-width:600px){
+      .paper{padding:30px 18px;}
+      .title{font-size:28px;}
+      .content{font-size:15px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="floating">
+    <div class="heart">💜</div>
+    <div class="heart">💖</div>
+    <div class="heart">💜</div>
+    <div class="heart">💗</div>
+    <div class="heart">💜</div>
+  </div>
+
+  <main class="letter-wrap">
+    <section class="frame">
+      <article class="paper">
+
+        <header class="top">
+          <div class="date">Viernes, 17 de abril de 2026 — Noche</div>
+          <div class="seal">
+            <div class="ring">💍</div>
+            <div>Para ti</div>
+          </div>
+        </header>
+
+        <h1 class="title">Carta para mi amor</h1>
+        <div class="subtitle">Una noche donde mi corazón solo te nombra</div>
+
+        <section class="content">
+          <div class="saludo">Mi amor,</div>
+
+          <p>
+            Esta noche me encontré pensándote más de lo normal… como si el silencio tuviera tu nombre y cada latido mío
+            pronunciara el tuyo sin descanso. No sé qué tiene esta noche, pero me siento más vulnerable, más enamorado,
+            más necesitado de ti… y al mismo tiempo, más feliz de saber que existes.
+          </p>
+
+          <p>
+            Quiero que lo sepas: no hay un solo día en el que no te lleve conmigo. A veces en una sonrisa tonta, a veces
+            en un pensamiento que llega sin avisar, a veces en esa nostalgia bonita que se siente cuando alguien se vuelve
+            parte de tu vida de una manera tan intensa que ya no sabes cómo era todo antes de esa persona.
+          </p>
+
+          <div class="divider">
+            <span></span><b>✦</b><span></span>
+          </div>
+
+          <p>
+            Y tú… tú llegaste para cambiarme.
+          </p>
+
+          <p>
+            Me encanta la forma en que te amo. Me encanta cómo me haces sentir hombre, cómo me despiertas cosas que ni yo
+            sabía que tenía guardadas. Me encanta que con solo imaginarte se me acelera el corazón, como si mi cuerpo supiera
+            que eres mi debilidad más hermosa. Y es que tú no eres solo mi novia… tú eres ese deseo que no se apaga, esa necesidad
+            que no se puede disimular, ese pensamiento que regresa siempre aunque yo intente concentrarme en cualquier otra cosa.
+          </p>
+
+          <p>
+            Esta noche te extraño con ganas, con fuego, con amor del que se siente en la piel.
+          </p>
+
+          <p>
+            Me encantaría tenerte aquí conmigo, acercarte despacio, mirarte como si el mundo se detuviera, y recordarte con besos
+            que tú eres mi lugar favorito. Me gustaría abrazarte fuerte, de esos abrazos que no se sueltan rápido, de esos que dicen
+            “quédate”, aunque no lo digamos en voz alta. Y luego besarte… besarte con calma, con hambre, con esa pasión que me despiertas
+            sin esfuerzo.
+          </p>
+
+          <div class="divider">
+            <span></span><b>♥</b><span></span>
+          </div>
+
+          <p>
+            Porque tú provocas en mí lo más dulce y lo más intenso.
+          </p>
+
+          <p>
+            Quiero que nunca dudes de lo que siento. Yo no te amo a medias, ni por ratos. Yo te amo con todo. Con mi mente, con mi cuerpo,
+            con mi orgullo, con mi corazón. Te amo de una forma que no se puede explicar sin temblar un poquito por dentro. Te amo como se ama
+            lo que vale la pena cuidar, lo que vale la pena esperar, lo que vale la pena soñar.
+          </p>
+
+          <p>
+            Y si supieras lo que pienso de ti cuando estoy solo… si supieras cuántas veces me dan ganas de escribirte solo para decirte que me haces
+            falta, que te deseo, que te necesito, que eres mi paz y mi locura al mismo tiempo.
+          </p>
+
+          <p>
+            Esta noche solo quiero que cierres los ojos y lo sientas: yo estoy contigo. Aunque estemos lejos, aunque no pueda tocarte ahora, mi amor está
+            pegado a ti como si fuera parte de tu piel. Y te juro que cuando por fin te tenga cerca, te voy a mirar como se mira lo que uno ama de verdad…
+            con orgullo, con ternura y con esa pasión que solo tú sabes sacar de mí.
+          </p>
+
+          <p>
+            Descansa, mi vida.
+          </p>
+
+          <p>
+            Y si en algún momento de esta noche sientes un escalofrío bonito… soy yo pensándote, deseándote, amándote en silencio.
+          </p>
+
+          <p>
+            Te amo… pero de esos amores que se sienten hasta en la respiración.<br>
+            Y esta noche, más que nunca, quiero que lo recuerdes:
+          </p>
+
+          <p style="text-align:center; font-size:18px;">
+            <strong>tú eres lo mejor que me ha pasado.</strong>
+          </p>
+
+          <div class="signature">
+            <div class="closing">Con todo lo que soy,</div>
+            <div class="closing">tu amor. ❤️</div>
+
+            <div class="name">
+              <span>JUAN KALETH MENDOZA PRIMERA</span> 💜
+            </div>
+          </div>
+
+          <div class="final-quote">
+            Y si alguna vez el mundo intenta apagar lo que sentimos, prométeme que recordarás esto:
+            yo te elegí con el alma, te cuido con el corazón y te deseo con una fuerza que no se aprende,
+            porque lo nuestro no es casualidad… lo nuestro es destino, es magia, es verdad,
+            y cada noche que pasa me convence más de que nací para amarte así, sin límites, sin miedo y sin final…
+            <br><br>
+            <strong>TE AMO DEMASIADO VALERIA PETRO VILLAZÓN</strong>
+          </div>
+
+          <div class="footer-detail">
+            <span>Hecho con</span> <i>♥</i> <span>para ti</span>
+          </div>
+
+        </section>
+      </article>
+    </section>
+  </main>
+
+</body>
+  </html>
